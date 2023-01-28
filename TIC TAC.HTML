@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>TIC TAC TOY</title>
+    <style>
+       body{
+            background-color: rgb(0, 0, 0);
+        }
+        table{
+            margin: auto;
+            margin-top: 3cm;
+        }
+    </style>
+</head>
+<body>
+    <div id="venceu">
+        <table>
+            <td>
+                <img src="area.jpg" id="pos0" onmouseup="clicar(0)" onmouseenter="entrou(0)" onmouseout="saiu(0)" >
+            </td>
+            <td>
+                <img src="area.jpg" id="pos1" onmouseup="clicar(1)" onmouseenter="entrou(1)" onmouseout="saiu(1)" >
+            </td>
+            <td>
+                <img src="area.jpg" id="pos2" onmouseup="clicar(2)" onmouseenter="entrou(2)" onmouseout="saiu(2)" >
+            </td>
+            <tr>
+                <td>
+                    <img src="area.jpg" id="pos3" onmouseup="clicar(3)" onmouseenter="entrou(3)" onmouseout="saiu(3)" >
+                </td>
+                <td>
+                    <img src="area.jpg" id="pos4" onmouseup="clicar(4)" onmouseenter="entrou(4)" onmouseout="saiu(4)" >
+                </td>
+                <td>
+                    <img src="area.jpg" id="pos5" onmouseup="clicar(5)" onmouseenter="entrou(5)" onmouseout="saiu(5)" >
+                </td> 
+            </tr>
+            <tr>
+                <td>
+                    <img src="area.jpg" id="pos6" onmouseup="clicar(6)" onmouseenter="entrou(6)" onmouseout="saiu(6)" >
+                </td>
+                <td>
+                    <img src="area.jpg" id="pos7" onmouseup="clicar(7)" onmouseenter="entrou(7)" onmouseout="saiu(7)" >
+                </td>
+                <td>
+                    <img src="area.jpg" id="pos8" onmouseup="clicar(8)" onmouseenter="entrou(8)" onmouseout="saiu(8)" >
+                </td> 
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var jogada=[0,0,0,0,0,0,0,0,0]
+        var vezdojogador=1
+
+        function clicar(pos){
+            if(vezdojogador==1 && jogada[pos] == 0 ){
+                document.getElementById("pos"+pos).src='xis.jpg'
+                vezdojogador=-1
+                jogada[pos]=1
+            }else if(vezdojogador==-1 && jogada[pos] == 0 ){
+                document.getElementById("pos"+pos).src='bola.jpg'
+                vezdojogador=1
+                jogada[pos]=-1
+           }
+       
+            if(jogada[0]+jogada[1]+jogada[2]==3 || jogada[3]+jogada[4]+jogada[5]==3 ){
+                alert('Jogador X ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[6]+jogada[7]+jogada[8]==3 || jogada[0]+jogada[3]+jogada[6]==3 ){
+                alert('Jogador X ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[1]+jogada[4]+jogada[7]==3 || jogada[2]+jogada[5]+jogada[8]==3 ){
+                alert('Jogador X ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[0]+jogada[4]+jogada[8]==3 || jogada[2]+jogada[4]+jogada[6]==3 ){
+                alert('Jogador X ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[0]+jogada[1]+jogada[2]==-3 || jogada[3]+jogada[4]+jogada[5]==-3 ){
+                alert('Jogador O ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[6]+jogada[7]+jogada[8]==-3 || jogada[0]+jogada[3]+jogada[6]==-3 ){
+                alert('Jogador O ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[1]+jogada[4]+jogada[7]==-3 || jogada[2]+jogada[5]+jogada[8]==-3 ){
+                alert('Jogador O ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada[0]+jogada[4]+jogada[8]==-3 || jogada[2]+jogada[4]+jogada[6]==-3 ){
+                alert('Jogador O ganhou!')
+                location.reload(false)
+                vezdojogador=0
+            }
+            if(jogada.indexOf(0) == -1 && vezdojogador!=0){
+                alert('DEU VELHA!')
+                location.reload(false)
+
+            }
+        }
+        function entrou(pos){
+            if(vezdojogador==1 && jogada[pos] == 0 ){
+                document.getElementById("pos"+pos).src='xis b.jpg'
+            }else if(jogada[pos] == 0  && vezdojogador==-1 ){
+                document.getElementById("pos"+pos).src='bola b.jpg'
+            }
+        }
+        function saiu(pos){
+            if(jogada[pos] == 0 ){
+                document.getElementById("pos"+pos).src='area.jpg'                   
+            }
+        }
+    </script>
+</body>
+</html>
